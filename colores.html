@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newton Lab — Paleta Visual</title>
+<style>
+:root {
+    --bg: #15182D;
+    --bg-left: #1A1430;
+    --bg-right: #0E1E25;
+
+    --surface: #242542;
+    --surface-hover: #2C2D4D;
+    --border: #34344F;
+
+    --primary: #7E4FEC;
+    --primary-light: #A17FF0;
+    --primary-dark: #6839DA;
+
+    --secondary: #3B78C0;
+    --secondary-light: #18AEB2;
+
+    --accent: #18AEB2;
+    --success: #00C8B8;
+    --physics: #00E676;
+    --magenta: #FF2D95;
+
+    --text: #FDFDFD;
+    --text-secondary: #CAC5DA;
+    --text-muted: #8F8FA5;
+
+    --gradient-bg: linear-gradient(
+        110deg,
+        #1A1430 0%,
+        #17162E 35%,
+        #15182D 50%,
+        #111B26 75%,
+        #0E1E25 100%
+    );
+
+    --gradient-primary: linear-gradient(90deg, #6839DA, #8A4FF0);
+
+    --gradient-text: linear-gradient(
+        90deg,
+        #7048E8,
+        #4F72D1,
+        #18AEB2
+    );
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--text);
+    background: var(--gradient-bg);
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(126,79,236,.22) 0 2px, transparent 3px),
+        radial-gradient(circle at 30% 12%, rgba(0,230,118,.18) 0 1.5px, transparent 2.5px),
+        radial-gradient(circle at 70% 25%, rgba(255,45,149,.16) 0 2px, transparent 3px),
+        radial-gradient(circle at 90% 16%, rgba(24,174,178,.18) 0 1.5px, transparent 2.5px),
+        radial-gradient(circle at 18% 65%, rgba(59,120,192,.18) 0 2px, transparent 3px),
+        radial-gradient(circle at 82% 72%, rgba(126,79,236,.16) 0 2px, transparent 3px);
+    opacity: .9;
+}
+
+.container {
+    width: min(1180px, calc(100% - 40px));
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+nav {
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.nav-links a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.hero {
+    text-align: center;
+    padding: 76px 0 70px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 17px;
+    border: 1px solid rgba(126,79,236,.45);
+    border-radius: 999px;
+    background: rgba(36,37,66,.55);
+    color: var(--accent);
+    font-size: 13px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 14px rgba(0,200,184,.8);
+}
+
+h1 {
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: .98;
+    margin: 28px 0 18px;
+    letter-spacing: -4px;
+}
+
+.gradient-text {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 680px;
+    margin: auto;
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+button, .button {
+    border: 0;
+    color: white;
+    padding: 13px 23px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.primary-btn {
+    background: var(--gradient-primary);
+    box-shadow: 0 10px 28px rgba(126,79,236,.3);
+}
+
+.secondary-btn {
+    background: rgba(36,37,66,.7);
+    border: 1px solid var(--border);
+}
+
+section {
+    padding: 70px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    margin: 0 0 10px;
+}
+
+.section-title p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 15px;
+}
+
+.swatch {
+    background: rgba(36,37,66,.72);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 10px;
+    transition: .2s ease;
+}
+
+.swatch:hover {
+    transform: translateY(-3px);
+    background: var(--surface-hover);
+}
+
+.color {
+    height: 100px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.swatch strong {
+    display: block;
+    font-size: 14px;
+}
+
+.swatch small {
+    color: var(--text-muted);
+}
+
+.gradient-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.gradient-card {
+    border: 1px solid var(--border);
+    background: rgba(36,37,66,.62);
+    padding: 14px;
+    border-radius: 16px;
+}
+
+.gradient-preview {
+    height: 130px;
+    border-radius: 11px;
+    margin-bottom: 14px;
+}
+
+.gradient-card strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.gradient-card code {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 22px;
+}
+
+.panel {
+    background: rgba(36,37,66,.72);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.18);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.panel-header h3 {
+    margin: 0;
+}
+
+.status {
+    color: var(--success);
+    font-size: 12px;
+}
+
+.simulator {
+    position: relative;
+    min-height: 280px;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid rgba(126,79,236,.25);
+    background:
+        linear-gradient(rgba(126,79,236,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(126,79,236,.08) 1px, transparent 1px),
+        #101525;
+    background-size: 30px 30px;
+}
+
+.axis-x, .axis-y {
+    position: absolute;
+    background: rgba(202,197,218,.22);
+}
+
+.axis-x {
+    left: 0;
+    right: 0;
+    bottom: 38px;
+    height: 1px;
+}
+
+.axis-y {
+    top: 0;
+    bottom: 0;
+    left: 45px;
+    width: 1px;
+}
+
+.car {
+    position: absolute;
+    left: 14%;
+    bottom: 47px;
+    font-size: 34px;
+    filter: drop-shadow(0 0 12px rgba(0,230,118,.45));
+}
+
+.trajectory {
+    position: absolute;
+    left: 18%;
+    bottom: 76px;
+    width: 67%;
+    height: 100px;
+    border-top: 2px dashed var(--physics);
+    border-radius: 50%;
+    transform: rotate(-3deg);
+    opacity: .7;
+}
+
+.target {
+    position: absolute;
+    right: 8%;
+    bottom: 45px;
+    color: var(--magenta);
+    font-size: 28px;
+    filter: drop-shadow(0 0 10px rgba(255,45,149,.5));
+}
+
+.form-row {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    outline: none;
+    color: var(--text);
+    background: #17192E;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(126,79,236,.13);
+}
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(52,52,79,.7);
+}
+
+.metric:last-child { border-bottom: 0; }
+
+.metric span:first-child { color: var(--text-muted); }
+.metric strong { color: var(--physics); }
+
+footer {
+    text-align: center;
+    padding: 40px 0 55px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+@media (max-width: 800px) {
+    .nav-links { display: none; }
+    .gradient-grid, .demo-grid { grid-template-columns: 1fr; }
+    h1 { letter-spacing: -2px; }
+}
+
+.copy-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 9px 10px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: rgba(126,79,236,.10);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    transition: .2s ease;
+}
+
+.copy-btn:hover {
+    background: rgba(126,79,236,.22);
+    border-color: var(--primary);
+    color: var(--text);
+}
+
+.copy-btn.copied {
+    background: rgba(0,230,118,.12);
+    border-color: rgba(0,230,118,.5);
+    color: var(--physics);
+}
+
+.gradient-card .copy-btn {
+    margin-top: 13px;
+}
+
+.css-box {
+    margin-top: 18px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #10121F;
+}
+
+.css-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.css-box-header strong {
+    font-size: 13px;
+}
+
+.css-code {
+    margin: 0;
+    padding: 14px;
+    max-height: 260px;
+    overflow: auto;
+    border-radius: 10px;
+    background: #0A0C15;
+    color: #C8D1E0;
+    font: 12px/1.65 Consolas, Monaco, monospace;
+    white-space: pre;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <nav>
+        <div class="logo"><span>Newton</span>Lab</div>
+        <div class="nav-links">
+            <a href="#paleta">Paleta</a>
+            <a href="#gradientes">Gradientes</a>
+            <a href="#simulador">Simulador</a>
+        </div>
+        <a class="button primary-btn" href="#simulador">Probar simulación</a>
+    </nav>
+
+    <header class="hero">
+        <div class="badge">
+            <span class="dot"></span>
+            Laboratorio de simulación física
+        </div>
+
+        <h1>
+            Explora la física<br>
+            <span class="gradient-text">de forma interactiva</span>
+        </h1>
+
+        <p>
+            Una propuesta visual basada en la paleta del sitio de referencia:
+            fondo oscuro, violeta, azul, turquesa y acentos para representar
+            los elementos físicos.
+        </p>
+
+        <div class="buttons">
+            <button class="primary-btn">Iniciar simulación →</button>
+            <button class="secondary-btn">Ver ejercicios</button>
+        </div>
+    </header>
+
+    <section id="paleta">
+        <div class="section-title">
+            <h2>Paleta de colores</h2>
+            <p>Todos los colores principales utilizados en la interfaz.</p>
+        </div>
+
+        <div class="palette-grid">
+            <div class="swatch"><div class="color" style="background:#1A1430"></div><strong>Background Left</strong><small>#1A1430</small><button class="copy-btn" onclick="copyText('#1A1430', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#15182D"></div><strong>Background</strong><small>#15182D</small><button class="copy-btn" onclick="copyText('#15182D', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#0E1E25"></div><strong>Background Right</strong><small>#0E1E25</small><button class="copy-btn" onclick="copyText('#0E1E25', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#242542"></div><strong>Surface</strong><small>#242542</small><button class="copy-btn" onclick="copyText('#242542', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#7E4FEC"></div><strong>Primary</strong><small>#7E4FEC</small><button class="copy-btn" onclick="copyText('#7E4FEC', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#6839DA"></div><strong>Primary Dark</strong><small>#6839DA</small><button class="copy-btn" onclick="copyText('#6839DA', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#3B78C0"></div><strong>Secondary</strong><small>#3B78C0</small><button class="copy-btn" onclick="copyText('#3B78C0', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#18AEB2"></div><strong>Accent Cyan</strong><small>#18AEB2</small><button class="copy-btn" onclick="copyText('#18AEB2', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#00E676"></div><strong>Physics Green</strong><small>#00E676</small><button class="copy-btn" onclick="copyText('#00E676', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#FF2D95"></div><strong>Physics Magenta</strong><small>#FF2D95</small><button class="copy-btn" onclick="copyText('#FF2D95', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#FDFDFD"></div><strong style="color:#111">Text</strong><small>#FDFDFD</small><button class="copy-btn" onclick="copyText('#FDFDFD', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#8F8FA5"></div><strong>Muted</strong><small>#8F8FA5</small><button class="copy-btn" onclick="copyText('#8F8FA5', this)">Copiar color</button></div>
+        </div>
+    </section>
+
+    <section id="gradientes">
+        <div class="section-title">
+            <h2>Gradientes</h2>
+            <p>Los tres degradados principales de la propuesta.</p>
+        </div>
+
+        <div class="gradient-grid">
+            <div class="gradient-card">
+                <div class="gradient-preview" style="background:var(--gradient-bg)"></div>
+                <strong>Background Gradient</strong>
+                <code>#1A1430 → #15182D → #0E1E25</code><button class="copy-btn" onclick="copyText('background: linear-gradient(110deg, #1A1430 0%, #17162E 35%, #15182D 50%, #111B26 75%, #0E1E25 100%);', this)">Copiar CSS</button>
+            </div>
+
+            <div class="gradient-card">
+                <div class="gradient-preview" style="background:var(--gradient-primary)"></div>
+                <strong>Primary Gradient</strong>
+                <code>#6839DA → #8A4FF0</code><button class="copy-btn" onclick="copyText('background: linear-gradient(90deg, #6839DA, #8A4FF0);', this)">Copiar CSS</button>
+            </div>
+
+            <div class="gradient-card">
+                <div class="gradient-preview" style="background:var(--gradient-text)"></div>
+                <strong>Text Gradient</strong>
+                <code>#7048E8 → #4F72D1 → #18AEB2</code><button class="copy-btn" onclick="copyText('background: linear-gradient(90deg, #7048E8, #4F72D1, #18AEB2);', this)">Copiar CSS</button>
+            </div>
+        </div>
+
+        <div class="css-box">
+            <div class="css-box-header">
+                <strong>Variables CSS completas</strong>
+                <button class="copy-btn" style="width:auto;margin:0;padding:8px 14px"
+                        onclick="copyCssVariables(this)">Copiar todo el CSS</button>
+            </div>
+            <pre class="css-code">:root {
+    --bg: #15182D;
+    --bg-left: #1A1430;
+    --bg-right: #0E1E25;
+
+    --surface: #242542;
+    --surface-hover: #2C2D4D;
+    --border: #34344F;
+
+    --primary: #7E4FEC;
+    --primary-light: #A17FF0;
+    --primary-dark: #6839DA;
+
+    --secondary: #3B78C0;
+    --secondary-light: #18AEB2;
+
+    --accent: #18AEB2;
+    --success: #00C8B8;
+    --physics: #00E676;
+    --magenta: #FF2D95;
+
+    --text: #FDFDFD;
+    --text-secondary: #CAC5DA;
+    --text-muted: #8F8FA5;
+
+    --gradient-bg: linear-gradient(
+        110deg,
+        #1A1430 0%,
+        #17162E 35%,
+        #15182D 50%,
+        #111B26 75%,
+        #0E1E25 100%
+    );
+
+    --gradient-primary: linear-gradient(
+        90deg,
+        #6839DA,
+        #8A4FF0
+    );
+
+    --gradient-text: linear-gradient(
+        90deg,
+        #7048E8,
+        #4F72D1,
+        #18AEB2
+    );
+}</pre>
+        </div>
+    </section>
+
+    <section id="simulador">
+        <div class="section-title">
+            <h2>    Vista de simulación</h2>
+            <p>Aquí puedes ver cómo funcionarían los colores dentro de NewtonLab.</p>
+        </div>
+
+        <div class="demo-grid">
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>Movimiento Uniforme</h3>
+                    <span class="status">● Simulación lista</span>
+                </div>
+
+                <div class="simulator">
+                    <div class="axis-x"></div>
+                    <div class="axis-y"></div>
+                    <div class="trajectory"></div>
+                    <div class="car">🚗</div>
+                    <div class="target">🎯</div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>Parámetros</h3>
+                </div>
+
+                <div class="form-row">
+                    <label>Velocidad (m/s)</label>
+                    <input value="20">
+                </div>
+
+                <div class="form-row">
+                    <label>Tiempo (s)</label>
+                    <input value="5">
+                </div>
+
+                <div class="form-row">
+                    <label>Tipo de simulación</label>
+                    <select>
+                        <option>Movimiento Uniforme</option>
+                        <option>Movimiento Acelerado</option>
+                        <option>Tiro parabólico</option>
+                    </select>
+                </div>
+
+                <button class="primary-btn" style="width:100%">▶ Ejecutar simulación</button>
+
+                <div style="margin-top:18px">
+                    <div class="metric">
+                        <span>Distancia</span>
+                        <strong>100 m</strong>
+                    </div>
+                    <div class="metric">
+                        <span>Velocidad</span>
+                        <strong>20 m/s</strong>
+                    </div>
+                    <div class="metric">
+                        <span>Estado</span>
+                        <strong>Activo</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        NewtonLab · Interfaz experimental de simulaciones de física
+    </footer>
+
+</div>
+
+
+<script>
+async function copyText(text, button) {
+    try {
+        await navigator.clipboard.writeText(text);
+        const original = button.textContent;
+        button.textContent = "✓ Copiado";
+        button.classList.add("copied");
+
+        setTimeout(() => {
+            button.textContent = original;
+            button.classList.remove("copied");
+        }, 1400);
+    } catch (error) {
+        // Fallback para navegadores que bloqueen Clipboard API
+        const area = document.createElement("textarea");
+        area.value = text;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+
+        const original = button.textContent;
+        button.textContent = "✓ Copiado";
+        button.classList.add("copied");
+
+        setTimeout(() => {
+            button.textContent = original;
+            button.classList.remove("copied");
+        }, 1400);
+    }
+}
+
+function copyCssVariables(button) {
+    const css = `:root {
+    --bg: #15182D;
+    --bg-left: #1A1430;
+    --bg-right: #0E1E25;
+
+    --surface: #242542;
+    --surface-hover: #2C2D4D;
+    --border: #34344F;
+
+    --primary: #7E4FEC;
+    --primary-light: #A17FF0;
+    --primary-dark: #6839DA;
+
+    --secondary: #3B78C0;
+    --secondary-light: #18AEB2;
+
+    --accent: #18AEB2;
+    --success: #00C8B8;
+    --physics: #00E676;
+    --magenta: #FF2D95;
+
+    --text: #FDFDFD;
+    --text-secondary: #CAC5DA;
+    --text-muted: #8F8FA5;
+
+    --gradient-bg: linear-gradient(
+        110deg,
+        #1A1430 0%,
+        #17162E 35%,
+        #15182D 50%,
+        #111B26 75%,
+        #0E1E25 100%
+    );
+
+    --gradient-primary: linear-gradient(
+        90deg,
+        #6839DA,
+        #8A4FF0
+    );
+
+    --gradient-text: linear-gradient(
+        90deg,
+        #7048E8,
+        #4F72D1,
+        #18AEB2
+    );
+}`;
+
+    copyText(css, button);
+}
+</script>
+
+</body>
+</html>
