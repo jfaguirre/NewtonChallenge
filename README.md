@@ -10,7 +10,7 @@
 git clone https://github.com/jfaguirre/NewtonChallenge.git
 ```
 
-### 2. Entra a tu proyecto desde VSC y en la terminal ejecutas
+### 2. Entra a tu proyecto -NewtonChallenge- desde VSC y en la terminal ejecutas
 
 ```bash
 npm install
