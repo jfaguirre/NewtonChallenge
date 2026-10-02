@@ -517,29 +517,29 @@ footer {
 
     <section id="paleta">
         <div class="section-title">
-            <h2>Paleta de colores</h2>
+            <h2>🎨 Paleta de colores</h2>
             <p>Todos los colores principales utilizados en la interfaz.</p>
         </div>
 
         <div class="palette-grid">
-            <div class="swatch"><div class="color" style="background:#1A1430"></div><strong>Background Left</strong><small>#1A1430</small><button class="copy-btn" onclick="copyText('#1A1430', this)">Copiar color</button></div>
-            <div class="swatch"><div class="color" style="background:#15182D"></div><strong>Background</strong><small>#15182D</small><button class="copy-btn" onclick="copyText('#15182D', this)">Copiar color</button></div>
-            <div class="swatch"><div class="color" style="background:#0E1E25"></div><strong>Background Right</strong><small>#0E1E25</small><button class="copy-btn" onclick="copyText('#0E1E25', this)">Copiar color</button></div>
-            <div class="swatch"><div class="color" style="background:#242542"></div><strong>Surface</strong><small>#242542</small><button class="copy-btn" onclick="copyText('#242542', this)">Copiar color</button></div>
-            <div class="swatch"><div class="color" style="background:#7E4FEC"></div><strong>Primary</strong><small>#7E4FEC</small><button class="copy-btn" onclick="copyText('#7E4FEC', this)">Copiar color</button></div>
-            <div class="swatch"><div class="color" style="background:#6839DA"></div><strong>Primary Dark</strong><small>#6839DA</small><button class="copy-btn" onclick="copyText('#6839DA', this)">Copiar color</button></div>
-            <div class="swatch"><div class="color" style="background:#3B78C0"></div><strong>Secondary</strong><small>#3B78C0</small><button class="copy-btn" onclick="copyText('#3B78C0', this)">Copiar color</button></div>
-            <div class="swatch"><div class="color" style="background:#18AEB2"></div><strong>Accent Cyan</strong><small>#18AEB2</small><button class="copy-btn" onclick="copyText('#18AEB2', this)">Copiar color</button></div>
-            <div class="swatch"><div class="color" style="background:#00E676"></div><strong>Physics Green</strong><small>#00E676</small><button class="copy-btn" onclick="copyText('#00E676', this)">Copiar color</button></div>
-            <div class="swatch"><div class="color" style="background:#FF2D95"></div><strong>Physics Magenta</strong><small>#FF2D95</small><button class="copy-btn" onclick="copyText('#FF2D95', this)">Copiar color</button></div>
-            <div class="swatch"><div class="color" style="background:#FDFDFD"></div><strong style="color:#111">Text</strong><small>#FDFDFD</small><button class="copy-btn" onclick="copyText('#FDFDFD', this)">Copiar color</button></div>
-            <div class="swatch"><div class="color" style="background:#8F8FA5"></div><strong>Muted</strong><small>#8F8FA5</small><button class="copy-btn" onclick="copyText('#8F8FA5', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#1A1430"></div><strong>Background Left</strong><small>#1A1430</small><button class="copy-btn" onclick="copyText('color: var(--bg-left);', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#15182D"></div><strong>Background</strong><small>#15182D</small><button class="copy-btn" onclick="copyText('color: var(--bg);', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#0E1E25"></div><strong>Background Right</strong><small>#0E1E25</small><button class="copy-btn" onclick="copyText('color: var(--bg-right);', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#242542"></div><strong>Surface</strong><small>#242542</small><button class="copy-btn" onclick="copyText('color: var(--surface);', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#7E4FEC"></div><strong>Primary</strong><small>#7E4FEC</small><button class="copy-btn" onclick="copyText('color: var(--primary);', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#6839DA"></div><strong>Primary Dark</strong><small>#6839DA</small><button class="copy-btn" onclick="copyText('color: var(--primary-dark);', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#3B78C0"></div><strong>Secondary</strong><small>#3B78C0</small><button class="copy-btn" onclick="copyText('color: var(--secondary);', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#18AEB2"></div><strong>Accent Cyan</strong><small>#18AEB2</small><button class="copy-btn" onclick="copyText('color: var(--accent);', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#00E676"></div><strong>Physics Green</strong><small>#00E676</small><button class="copy-btn" onclick="copyText('color: var(--physics);', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#FF2D95"></div><strong>Physics Magenta</strong><small>#FF2D95</small><button class="copy-btn" onclick="copyText('color: var(--magenta);', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#FDFDFD"></div><strong style="color:#111">Text</strong><small>#FDFDFD</small><button class="copy-btn" onclick="copyText('color: var(--text);', this)">Copiar color</button></div>
+            <div class="swatch"><div class="color" style="background:#8F8FA5"></div><strong>Muted</strong><small>#8F8FA5</small><button class="copy-btn" onclick="copyText('color: var(--text-muted);', this)">Copiar color</button></div>
         </div>
     </section>
 
     <section id="gradientes">
         <div class="section-title">
-            <h2>Gradientes</h2>
+            <h2>🌈 Gradientes</h2>
             <p>Los tres degradados principales de la propuesta.</p>
         </div>
 
@@ -547,25 +547,25 @@ footer {
             <div class="gradient-card">
                 <div class="gradient-preview" style="background:var(--gradient-bg)"></div>
                 <strong>Background Gradient</strong>
-                <code>#1A1430 → #15182D → #0E1E25</code><button class="copy-btn" onclick="copyText('background: linear-gradient(110deg, #1A1430 0%, #17162E 35%, #15182D 50%, #111B26 75%, #0E1E25 100%);', this)">Copiar CSS</button>
+                <code>#1A1430 → #15182D → #0E1E25</code><button class="copy-btn" onclick="copyText('background: var(--gradient-bg);', this)">Copiar CSS</button>
             </div>
 
             <div class="gradient-card">
                 <div class="gradient-preview" style="background:var(--gradient-primary)"></div>
                 <strong>Primary Gradient</strong>
-                <code>#6839DA → #8A4FF0</code><button class="copy-btn" onclick="copyText('background: linear-gradient(90deg, #6839DA, #8A4FF0);', this)">Copiar CSS</button>
+                <code>#6839DA → #8A4FF0</code><button class="copy-btn" onclick="copyText('background: var(--gradient-primary);', this)">Copiar CSS</button>
             </div>
 
             <div class="gradient-card">
                 <div class="gradient-preview" style="background:var(--gradient-text)"></div>
                 <strong>Text Gradient</strong>
-                <code>#7048E8 → #4F72D1 → #18AEB2</code><button class="copy-btn" onclick="copyText('background: linear-gradient(90deg, #7048E8, #4F72D1, #18AEB2);', this)">Copiar CSS</button>
+                <code>#7048E8 → #4F72D1 → #18AEB2</code><button class="copy-btn" onclick="copyText('background: var(--gradient-text);', this)">Copiar CSS</button>
             </div>
         </div>
 
         <div class="css-box">
             <div class="css-box-header">
-                <strong>Variables CSS completas</strong>
+                <strong>📋 Variables CSS completas</strong>
                 <button class="copy-btn" style="width:auto;margin:0;padding:8px 14px"
                         onclick="copyCssVariables(this)">Copiar todo el CSS</button>
             </div>
@@ -621,7 +621,7 @@ footer {
 
     <section id="simulador">
         <div class="section-title">
-            <h2>    Vista de simulación</h2>
+            <h2>⚙️ Vista de simulación</h2>
             <p>Aquí puedes ver cómo funcionarían los colores dentro de NewtonLab.</p>
         </div>
 
